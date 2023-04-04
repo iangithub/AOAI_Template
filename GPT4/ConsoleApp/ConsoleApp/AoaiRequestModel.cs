@@ -21,13 +21,13 @@ public class AoaiRequestModel
     public float Top_p { get; set; }
 
     /// <summary>
-    /// between -2.0 and 2.0，數值愈高，回答的用字會較冷僻
+    /// between -2.0 and 2.0，設定為正值會根據新標記到目前為止在文本中的現有頻率來懲罰新標記，值越大越會懲罰出現頻率高的token，從而降低模型逐字重複同一行的可能性
     /// </summary>
     [JsonProperty(PropertyName = "frequency_penalty")]
     public int Frequency_Penalty { get; set; }
 
     /// <summary>
-    /// between -2.0 and 2.0，數值愈高，會避免重覆使用過的字，例如輸入時用過的字或是回答已用過的字
+    /// between -2.0 and 2.0，當設定為正值時，減少模型產生之前已經出現過的 token 的機率，減少模型直接重複之前的回應。這樣設定可以讓模型更傾向於產生新的內容。
     /// </summary>
     [JsonProperty(PropertyName = "presence_penalty")]
     public int Presence_Penalty { get; set; }
